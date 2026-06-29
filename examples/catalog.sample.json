@@ -1,0 +1,54 @@
+[
+ {
+  "name": "Aeropress",
+  "real_attestations": 14,
+  "total_mentions": 17,
+  "concept_inflated": false,
+  "sources": [
+   {
+    "url": "https://anotherhobbysite.com/my-everyday-setup",
+    "ts": "20190114093210",
+    "wayback_url": "http://web.archive.org/web/20190114093210id_/https://anotherhobbysite.com/my-everyday-setup",
+    "evidence": "I've owned a dozen brewers and the Aeropress is the one I actually reach for every single morning.",
+    "model": "Qwen3-30B-A3B-4bit"
+   },
+   {
+    "url": "https://old.reddit.com/r/somehobby/comments/abc123/",
+    "ts": "20201103221500",
+    "wayback_url": "http://web.archive.org/web/20201103221500id_/https://old.reddit.com/r/somehobby/comments/abc123/",
+    "evidence": "Cannot recommend the Aeropress enough — cheap, unbreakable, travels anywhere.",
+    "model": "Qwen3-30B-A3B-4bit"
+   }
+  ]
+ },
+ {
+  "name": "Fellow Stagg Kettle",
+  "real_attestations": 9,
+  "total_mentions": 11,
+  "concept_inflated": false,
+  "sources": [
+   {
+    "url": "https://example-gear-blog.com/best-of-2018",
+    "ts": "20181220140005",
+    "wayback_url": "http://web.archive.org/web/20181220140005id_/https://example-gear-blog.com/best-of-2018",
+    "evidence": "The Stagg is the only kettle I've kept on the counter three years running.",
+    "model": "Qwen3-30B-A3B-4bit"
+   }
+  ]
+ },
+ {
+  "name": "Comandante C40 Grinder",
+  "real_attestations": 8,
+  "total_mentions": 9,
+  "concept_inflated": false,
+  "sources": [
+   {
+    "url": "https://old.reddit.com/r/somehobby/comments/def456/",
+    "ts": "20210605101122",
+    "wayback_url": "http://web.archive.org/web/20210605101122id_/https://old.reddit.com/r/somehobby/comments/def456/",
+    "evidence": "Saved up for the Comandante and never looked back, the grind consistency is on another level.",
+    "model": "Qwen3-30B-A3B-4bit"
+   }
+  ]
+ }
+]
