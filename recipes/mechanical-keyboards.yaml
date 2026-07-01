@@ -1,0 +1,82 @@
+# A recipe is the whole "configure archivist for a new topic" step.
+# It declares WHAT you're cataloguing, the SHAPE of each record, WHERE to look, and the
+# cheap text filters that keep the slow local model focused. No code changes needed.
+#
+# This demo builds a catalog of the boards, switches, keycaps, and mods that the mechanical-
+# keyboard community is genuinely into — mined from archived Reddit threads. Swap in your
+# own topic by copying this file.
+
+topic: Mechanical Keyboards
+slug: mechanical-keyboards
+
+entity: >
+  a mechanical-keyboard enthusiasm — a specific board, switch, keycap set, layout, or mod
+  that a person is genuinely into
+
+definition: >
+  An ENTHUSIASM is a specific, named thing in the mechanical-keyboard hobby that a person
+  describes building, owning, daily-driving, lusting after ("endgame" / "grail"), or going
+  deep on: a particular board or kit, a switch, a keycap set or profile, a layout, or a mod
+  (lube, foam, tape, films). NOT an enthusiasm: a generic word ("keyboard", "switch"), a
+  one-time question, page navigation, or a brand mentioned only in passing.
+
+model: mlx-community/Qwen3-30B-A3B-4bit
+
+schema:
+  - name: name
+    desc: the specific board/switch/keycap/layout/mod, title case
+  - name: plain_name
+    desc: plain words, under 9
+  - name: category
+    desc: which kind of thing it is
+  - name: evidence_excerpt
+    desc: one sentence from the page showing someone genuinely into it
+  - name: source_type
+    desc: community
+
+enums:
+  category: [board, switch, keycaps, layout, mod, other]
+
+sources:
+  reddit:
+    - MechanicalKeyboards
+    - olkb
+    - CustomKeyboards
+    - ErgoMechKeyboards
+    - keycaps
+    - hotswap
+  # blogs: archived blogs, as bare domains (CDX-enumerated + listing-filtered):
+  #   - some-keyboard-blog.com
+  # phpbb: forums whose thread URLs are viewtopic.php?t=<id> (crawled via the forum index):
+  #   - host: a-phpbb-forum.net
+  #     base: a-phpbb-forum.net/forums/
+
+filters:
+  # listing: server-side CDX filter — only enumerate archived URLs whose path hints at a
+  # "here's what I'm into" page (the densest vein). Also used to keep forum threads by title.
+  listing: "build|endgame|grail|daily.?driver|collection|favou?rite|obsess|first.(board|build)|my.(board|keeb|setup)"
+  # triage: cheap text pre-filter — only pages whose text matches get the slow model.
+  triage: "switch|keycap|keeb|layout|hotswap|lube|foam|endgame|grail|daily driver|built|build log|i love|really into|obsessed"
+
+# meta-terms dropped at compile time (they're the topic itself, not instances of it)
+stopwords:
+  - keyboard
+  - keyboards
+  - switch
+  - switches
+  - keycap
+  - keycaps
+  - mechanical keyboard
+  - reddit
+  - subreddit
+  - thread
+  - post
+  - comment
+
+trail:
+  # follow community link-graph into related subreddits (reach pages that *show* an
+  # enthusiasm without naming it — the keyword-blindness fix)
+  relevant_sub: "keyboard|keeb|mech|switch|keycap|ergo|olkb|qmk|via"
+  follow_ext: false
+
+wayback_gap: 1.0

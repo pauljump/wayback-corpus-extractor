@@ -1,0 +1,28 @@
+[project]
+name = "archivist-wayback"
+version = "0.2.0"
+description = "Turn the Wayback Machine into a structured, fully-provenanced corpus with a local LLM."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Paul" }]
+keywords = ["wayback-machine", "internet-archive", "local-llm", "mlx", "apple-silicon", "dataset", "scraping", "provenance"]
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+# the local extraction backend (Apple Silicon)
+mlx = ["mlx-lm>=0.19.0"]
+
+[project.urls]
+Homepage = "https://github.com/pauljump/wayback-corpus-extractor"
+Issues = "https://github.com/pauljump/wayback-corpus-extractor/issues"
+
+[project.scripts]
+archivist = "archivist.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["archivist"]
